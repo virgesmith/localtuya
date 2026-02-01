@@ -1,4 +1,5 @@
 """Config flow for LocalTuya integration integration."""
+
 import errno
 import logging
 import time
@@ -33,6 +34,7 @@ from .const import (
     CONF_ADD_DEVICE,
     CONF_DPS_STRINGS,
     CONF_EDIT_DEVICE,
+    CONF_ENABLE_ADD_ENTITIES,
     CONF_ENABLE_DEBUG,
     CONF_LOCAL_KEY,
     CONF_MANUAL_DPS,
@@ -43,7 +45,6 @@ from .const import (
     CONF_RESET_DPIDS,
     CONF_SETUP_CLOUD,
     CONF_USER_ID,
-    CONF_ENABLE_ADD_ENTITIES,
     DATA_CLOUD,
     DATA_DISCOVERY,
     DOMAIN,
@@ -391,9 +392,10 @@ class LocaltuyaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 class LocalTuyaOptionsFlowHandler(config_entries.OptionsFlow):
     """Handle options flow for LocalTuya integration."""
 
+    # TODO determine if safe to completely ignore the arg
     def __init__(self, config_entry):
         """Initialize localtuya options flow."""
-        self.config_entry = config_entry
+        # self.config_entry = config_entry
         # self.dps_strings = config_entry.data.get(CONF_DPS_STRINGS, gen_dps_strings())
         # self.entities = config_entry.data[CONF_ENTITIES]
         self.selected_device = None
