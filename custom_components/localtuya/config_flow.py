@@ -392,10 +392,9 @@ class LocaltuyaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 class LocalTuyaOptionsFlowHandler(config_entries.OptionsFlow):
     """Handle options flow for LocalTuya integration."""
 
-    # TODO determine if safe to completely ignore the arg
     def __init__(self, config_entry):
         """Initialize localtuya options flow."""
-        # self.config_entry = config_entry
+        self._config_entry = config_entry
         # self.dps_strings = config_entry.data.get(CONF_DPS_STRINGS, gen_dps_strings())
         # self.entities = config_entry.data[CONF_ENTITIES]
         self.selected_device = None
