@@ -1,12 +1,12 @@
 {
   "domain": "localtuya",
   "name": "LocalTuya integration",
-  "codeowners": ["@ninemate"],
+  "codeowners": ["@virgesmith"],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/ninemate/localtuya/",
+  "documentation": "https://github.com/virgesmith/localtuya/",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/ninemate/localtuya/issues",
+  "issue_tracker": "https://github.com/virgesmith/localtuya/issues",
   "requirements": ["tinytuya==1.17.4"],
-  "version": "5.2.4"
+  "version": "5.2.6"
 }
