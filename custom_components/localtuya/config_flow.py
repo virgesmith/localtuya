@@ -1,4 +1,5 @@
 """Config flow for LocalTuya integration integration."""
+
 import errno
 import logging
 import time
@@ -33,6 +34,7 @@ from .const import (
     CONF_ADD_DEVICE,
     CONF_DPS_STRINGS,
     CONF_EDIT_DEVICE,
+    CONF_ENABLE_ADD_ENTITIES,
     CONF_ENABLE_DEBUG,
     CONF_LOCAL_KEY,
     CONF_MANUAL_DPS,
@@ -43,7 +45,6 @@ from .const import (
     CONF_RESET_DPIDS,
     CONF_SETUP_CLOUD,
     CONF_USER_ID,
-    CONF_ENABLE_ADD_ENTITIES,
     DATA_CLOUD,
     DATA_DISCOVERY,
     DOMAIN,
@@ -92,7 +93,7 @@ DEVICE_SCHEMA = vol.Schema(
         vol.Required(CONF_DEVICE_ID): cv.string,
         vol.Required(CONF_LOCAL_KEY): cv.string,
         vol.Required(CONF_PROTOCOL_VERSION, default="3.3"): vol.In(
-            ["3.1", "3.2", "3.3", "3.4"]
+            ["3.1", "3.2", "3.3", "3.4", "3.5"]
         ),
         vol.Required(CONF_ENABLE_DEBUG, default=False): bool,
         vol.Optional(CONF_SCAN_INTERVAL): int,
@@ -138,7 +139,7 @@ def options_schema(entities):
             vol.Required(CONF_HOST): cv.string,
             vol.Required(CONF_LOCAL_KEY): cv.string,
             vol.Required(CONF_PROTOCOL_VERSION, default="3.3"): vol.In(
-                ["3.1", "3.2", "3.3", "3.4"]
+                ["3.1", "3.2", "3.3", "3.4", "3.5"]
             ),
             vol.Required(CONF_ENABLE_DEBUG, default=False): bool,
             vol.Optional(CONF_SCAN_INTERVAL): int,
