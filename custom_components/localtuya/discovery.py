@@ -4,6 +4,7 @@ Entirely based on tuya-convert.py from tuya-convert:
 
 https://github.com/ct-Open-Source/tuya-convert/blob/master/scripts/tuya-discovery.py
 """
+
 import asyncio
 import json
 import logging
@@ -64,7 +65,10 @@ class TuyaDiscovery(asyncio.DatagramProtocol):
         try:
             data = decrypt_udp(data)
         except Exception:  # pylint: disable=broad-except
-            data = data.decode()
+            try:
+                data = data.decode()
+            except Exception:
+                return
 
         decoded = json.loads(data)
         self.device_found(decoded)
