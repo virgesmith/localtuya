@@ -1,4 +1,5 @@
 """Platform to present any Tuya DP as a sensor."""
+
 import base64
 import binascii
 import logging
@@ -32,7 +33,9 @@ def flow_schema(dps):
         ),
     }
 
+
 from homeassistant.components.sensor import SensorStateClass
+
 
 class LocaltuyaSensor(LocalTuyaEntity):
     """Representation of a Tuya sensor."""
@@ -57,12 +60,12 @@ class LocaltuyaSensor(LocalTuyaEntity):
     def state_class(self):
         dc = self.device_class
         if dc == SensorDeviceClass.ENERGY:
-            # kWh összesített értékek (DP 1/23/�� Energy dashboard kompatibilis
+            # kWh összesített értékek (DP 1/23/?? Energy dashboard kompatibilis
             return SensorStateClass.TOTAL_INCREASING
         if dc in (
-            SensorDeviceClass.POWER,            # pl. Active power
-            SensorDeviceClass.REACTIVE_POWER,   # Reactive power
-            SensorDeviceClass.POWER_FACTOR,     # Power factor
+            SensorDeviceClass.POWER,  # pl. Active power
+            SensorDeviceClass.REACTIVE_POWER,  # Reactive power
+            SensorDeviceClass.POWER_FACTOR,  # Power factor
         ):
             return SensorStateClass.MEASUREMENT
         return None
